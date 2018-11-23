@@ -26,16 +26,16 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     prebuilt-gson \
-	prebuilt-jsoup \
-	prebuilt-okhttp \
-	prebuilt-okio
+    prebuilt-jsoup \
+    prebuilt-okhttp \
+    prebuilt-okio
 
 LOCAL_STATIC_JAVA_AAR_LIBRARIES := \
+    prebuilt-play-services-basement \
     prebuilt-play-services-base \
-	prebuilt-play-services-basement \
-	prebuilt-play-services-location \
-	prebuilt-play-services-places-placereport \
-	prebuilt-play-services-task
+    prebuilt-play-services-location \
+    prebuilt-play-services-places-placereport \
+    prebuilt-play-services-task
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 LOCAL_RESOURCE_DIR += $(foreach lib, $(LOCAL_STATIC_JAVA_AAR_LIBRARIES),\
@@ -51,8 +51,6 @@ LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_AAPT_FLAGS := --auto-add-overlay
-LOCAL_MANIFEST_FILE := AndroidManifest.xml
 include $(BUILD_PACKAGE)
 
 include $(CLEAR_VARS)
