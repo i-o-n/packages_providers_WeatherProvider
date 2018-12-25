@@ -39,6 +39,8 @@ public class WeatherContentProvider extends ContentProvider {
             COLUMN_TEMPERATURE_IMPERIAL
     };
 
+    private WeatherChannelApi mWeatherChannelApi;
+
     @Override
     public boolean onCreate() {
         return true;
@@ -53,16 +55,16 @@ public class WeatherContentProvider extends ContentProvider {
             String sortOrder) {
 
         if (DEBUG) Log.i(TAG, "query: " + uri.toString());
-        WeatherChannelApi weatherChannelApi = new WeatherChannelApi(getContext());
-        weatherChannelApi.queryLocation();
-        while (weatherChannelApi.isRunning()) {
+        mWeatherChannelApi = new WeatherChannelApi(getContext());
+        mWeatherChannelApi.queryLocation();
+        while (mWeatherChannelApi.isRunning()) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        WeatherProvider provider = weatherChannelApi.getResult();
+        WeatherProvider provider = mWeatherChannelApi.getResult();
         if (DEBUG) Log.d(TAG, provider.toString());
         final MatrixCursor result = new MatrixCursor(PROJECTION_DEFAULT_WEATHER);
         if (provider != null) {
