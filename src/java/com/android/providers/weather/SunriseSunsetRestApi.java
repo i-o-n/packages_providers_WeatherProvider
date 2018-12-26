@@ -92,6 +92,7 @@ class SunriseSunsetRestApi {
                 .followRedirects(false)
                 .followSslRedirects(false)
                 .addNetworkInterceptor(REWRITE_RESPONSE_INTERCEPTOR)
+                .addInterceptor(new Utilities.GzipRequestInterceptor())
                 .addInterceptor(OFFLINE_INTERCEPTOR)
                 .cache(new Cache(new File(mContext.getCacheDir(),
                         "SunriseSunsetRestApiCache"), 10 * 1024 * 1024))
