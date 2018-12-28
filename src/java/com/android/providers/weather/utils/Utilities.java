@@ -43,10 +43,6 @@ public class Utilities {
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    public static boolean isLegacyMode() {
-		return SystemProperties.getBoolean("debug.weather_provider_legacy", false);
-    }
-
     public static class GzipRequestInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
