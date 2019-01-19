@@ -56,7 +56,7 @@ include $(BUILD_PACKAGE)
 include $(CLEAR_VARS)
 LOCAL_MODULE_CLASS := JAVA_LIBRARIES
 LOCAL_MODULE := prebuilt-play-services-base
-LOCAL_SRC_FILES := libs/aar/play-services-base-16.0.1.aar
+LOCAL_SRC_FILES := libs/aar/play-services-base-16.1.0.aar
 LOCAL_UNINSTALLABLE_MODULE := true
 LOCAL_SDK_VERSION := current
 include $(BUILD_PREBUILT)
@@ -64,7 +64,7 @@ include $(BUILD_PREBUILT)
 include $(CLEAR_VARS)
 LOCAL_MODULE_CLASS := JAVA_LIBRARIES
 LOCAL_MODULE := prebuilt-play-services-basement
-LOCAL_SRC_FILES := libs/aar/play-services-basement-16.0.1.aar
+LOCAL_SRC_FILES := libs/aar/play-services-basement-16.2.0.aar
 LOCAL_UNINSTALLABLE_MODULE := true
 LOCAL_SDK_VERSION := current
 include $(BUILD_PREBUILT)
