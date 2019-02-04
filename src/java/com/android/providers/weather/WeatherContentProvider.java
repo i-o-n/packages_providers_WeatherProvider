@@ -20,6 +20,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
+import android.os.Process;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -59,12 +60,17 @@ public class WeatherContentProvider extends ContentProvider {
             mWeatherChannelApi = new WeatherChannelApi(getContext());
         }
         mWeatherChannelApi.queryLocation();
+        int runningSeconds = 0;
         while (mWeatherChannelApi.isRunning()) {
+            if (runningSeconds >= 60) {
+                Process.killProcess(android.os.Process.myPid());
+            }
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            runningSeconds++;
         }
         WeatherProvider provider = mWeatherChannelApi.getResult();
         if (DEBUG) Log.d(TAG, provider.toString());
